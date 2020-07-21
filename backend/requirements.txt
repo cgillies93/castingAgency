@@ -1,0 +1,14 @@
+click
+Flask
+Flask-Cors
+Flask-SQLAlchemy
+itsdangerous
+Jinja2
+jose
+MarkupSafe
+pycryptodome
+pylint
+python-jose[cryptography]
+SQLAlchemy
+typed-ast
+Werkzeug

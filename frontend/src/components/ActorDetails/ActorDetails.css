@@ -1,0 +1,20 @@
+.actor-details {
+  width: 70%;
+  border: 2px solid black;
+  margin-top: 20px;
+  border-radius: 2px;
+}
+
+.actor-details-image {
+  width: 50%;
+  border: 2px solid black;
+  height: 400px;
+  margin: 20px auto;
+}
+
+.actor-name {
+  font-size: 2em;
+  text-transform: capitalize;
+  margin: 0;
+  padding: 0;
+}
