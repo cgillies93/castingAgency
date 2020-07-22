@@ -14,9 +14,12 @@ class CreateButton extends React.Component {
   render() {
     return (
       <div onClick={() => {this.navTo('/actors/create')}} className="create-button flex">
-        <h2 className="add">+</h2>
-        <h2 className="create">Create</h2>
+       <div className='button-wrapper'>
+         <h2 className="adds">+</h2>
+         <h2 className="create">Create</h2>
+       </div>
       </div>
+
     );
   }
 }

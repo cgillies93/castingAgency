@@ -23,7 +23,7 @@ class App extends Component {
       <div className="App">
       <Auth>
         <Navigation />
-          <div className="body flex">
+          <div className="body">
             <Router>
               <Switch>
                 <Route path="/" exact component={Home} />

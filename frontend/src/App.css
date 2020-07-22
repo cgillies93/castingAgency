@@ -20,21 +20,30 @@
   font-size: 40px;
 }
 
+.list-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
 .list-title {
-  width: 60%;
+  grid-column: 2/3;
 }
 
-.add {
-  font-size: 40px;
-  margin: 0 3px 7px 0;
-  padding: 0;
-}
-
-.create {
-  margin: 0;
-  padding: 0;
-}
 
 .pagination-menu {
   cursor: pointer;
+}
+
+@media screen and (max-width: 400px) {
+
+  .list-header {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  .list-title {
+    grid-column: 3/4;
+  }
+
 }

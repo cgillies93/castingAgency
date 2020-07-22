@@ -1,0 +1,38 @@
+.create-button-mobile {
+  display: none;
+  margin: auto;
+}
+
+.mobile-btn-wrapper {
+  border: 2px solid black;
+  border-radius: 4px;
+  height: 30px;
+  width: 30px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.add {
+  margin: auto;
+  font-weight: bold;
+}
+
+
+@media screen and (max-width: 400px) {
+
+  .create-button-mobile {
+      grid-column: 5/6;
+  }
+
+}
+
+@media screen and (max-width: 899px) {
+
+  .create-button-mobile {
+    display: flex;
+    align-items: center;
+  }
+
+
+}

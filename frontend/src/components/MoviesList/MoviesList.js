@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import './MoviesList.css';
 import Movie from '../Movie/Movie.js';
+import CreateButton from '../CreateButton/CreateButton';
+import MobileCreateButton from '../CreateButton/MobileCreateButton';
 import $ from 'jquery';
 import { AuthConsumer } from '../../authContext';
 import Can from '../Can/Can';
@@ -80,10 +82,7 @@ class MoviesList extends Component {
           <div className="list-title">
             <h2 className="page-title">Movies</h2>
           </div>
-          <div onClick={() => {this.navTo('/movies/create')}} className="create-button flex">
-            <h2 className="add">+</h2>
-            <h2 className="create">Create</h2>
-          </div>
+          <MobileCreateButton />
         </div>
         <div className="movies-card-list flex">
           {this.state.movies.map((movie, ind) => (

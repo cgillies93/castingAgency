@@ -50,9 +50,9 @@ class CreateActorForm extends Component {
 
   render() {
     return (
-      <div id="create-actor-form">
+      <div className="create-actor">
         <h2>Create New Actor</h2>
-        <form className="form-view" id="add-actor-form" onSubmit={this.createActor}>
+        <form className="create-actor-form" onSubmit={this.createActor}>
           <label>
             First Name
             <input type="text" name="firstName" onChange={this.handleChange}/>

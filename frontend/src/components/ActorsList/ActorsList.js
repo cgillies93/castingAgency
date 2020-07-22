@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './ActorsList.css';
 import Actor from '../Actor/Actor.js';
 import CreateButton from '../CreateButton/CreateButton';
+import MobileCreateButton from '../CreateButton/MobileCreateButton';
 import $ from 'jquery';
 import { withAuth0 } from '@auth0/auth0-react';
 import {
@@ -74,11 +75,12 @@ class ActorsList extends Component {
 
     return(
       <div className="actors-list">
-        <div className="list-header flex">
+        <div className="list-header">
           <div className="list-title">
             <h2 className="page-title">Actors</h2>
           </div>
             <CreateButton />
+            <MobileCreateButton />
         </div>
         <div className="actors-card-list flex">
           {this.state.actors.map((actor, ind) => (
