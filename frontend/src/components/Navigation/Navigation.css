@@ -11,10 +11,15 @@
   margin: 0 auto;
 }
 
+.logo {
+  cursor: pointer;
+}
+
 .nav-items {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 0px 40px;
+  cursor: pointer;
 }
 
 .login {

@@ -1,7 +1,9 @@
 .actor-details {
+  display: flex;
+  flex-direction: column;
+  margin: 25px auto;
   width: 70%;
   border: 2px solid black;
-  margin-top: 20px;
   border-radius: 2px;
 }
 

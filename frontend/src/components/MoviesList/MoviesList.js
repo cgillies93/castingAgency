@@ -82,6 +82,7 @@ class MoviesList extends Component {
           <div className="list-title">
             <h2 className="page-title">Movies</h2>
           </div>
+          <CreateButton />
           <MobileCreateButton />
         </div>
         <div className="movies-card-list flex">
