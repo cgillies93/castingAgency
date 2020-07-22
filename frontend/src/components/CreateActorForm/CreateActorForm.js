@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './CreateActorForm.css';
 import $ from 'jquery';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -59,6 +60,10 @@ class CreateActorForm extends Component {
           <label>
             Last Name
             <input type="text" name="lastName" onChange={this.handleChange}/>
+          </label>
+          <label>
+            Age
+            <input className="age-input" type="text" name="age" onChange={this.handleChange}/>
           </label>
           <label>
             Gender
