@@ -1,0 +1,22 @@
+.movie-details {
+  display: flex;
+  flex-direction: column;
+  margin: 25px auto;
+  width: 70%;
+  border: 2px solid black;
+  border-radius: 2px;
+}
+
+.movie-details-image {
+  width: 50%;
+  border: 2px solid black;
+  height: 400px;
+  margin: 20px auto;
+}
+
+.movie-name {
+  font-size: 2em;
+  text-transform: capitalize;
+  margin: 0;
+  padding: 0;
+}

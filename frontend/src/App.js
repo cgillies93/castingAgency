@@ -12,6 +12,7 @@ import MoviesList from './components/MoviesList/MoviesList.js';
 import Home from './components/Home/Home.js';
 import CreateActorForm from './components/CreateActorForm/CreateActorForm.js';
 import CreateMovieForm from './components/CreateMovieForm/CreateMovieForm.js';
+import MovieDetails from './components/MovieDetails/MovieDetails.js';
 import Auth from './components/Auth0/Auth.js';
 
 
@@ -31,7 +32,8 @@ class App extends Component {
                 <Route path="/actors/create" exact component={CreateActorForm}/>
                 <Route path="/actors/:id" component={ActorDetails} />
                 <Route path="/movies" exact component={MoviesList}/>
-                <Route path="/movies/create" component={CreateMovieForm}/>
+                <Route path="/movies/create" exact component={CreateMovieForm}/>
+                <Route path="/movies/:id" component={MovieDetails}/>
                 <Route />
               </Switch>
             </Router>

@@ -18,6 +18,7 @@ class MoviesList extends Component {
     super(props);
     this.state = {
       movies: [{
+        id: 1,
         title: "New Movie",
         genre: "Action",
         releaseDate: "2020 07 18"

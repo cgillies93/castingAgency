@@ -15,7 +15,7 @@ class Movie extends Component {
 
   render(){
     return(
-      <div className="movie-card">
+      <div onClick={() => {this.navTo(`/movies/${this.state.id}`)}} className="movie-card">
         <div className="movie-image">
           <img />
         </div>
