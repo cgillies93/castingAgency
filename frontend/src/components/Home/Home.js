@@ -8,11 +8,11 @@ class Home extends Component {
   }
 
   render(){
+
     return(
       <div className="home flex">
         <h2>Home</h2>
       </div>
-
     );
   }
 }

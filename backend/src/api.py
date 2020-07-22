@@ -59,24 +59,28 @@ def actor_details(actor_id):
         abort(404)
 
 @app.route('/actors/create', methods=['POST'])
-def create_actor():
-    first_name = request.get_json()['first_name']
-    last_name = request.get_json()['last_name']
-    gender = request.get_json()['gender']
-    age = request.get_json()['age']
+@requires_auth('post:actors')
+def create_actor(jwt):
+    data = request.get_json()
+    first_name = data.get('first_name')
+    last_name = data.get('last_name')
+    gender = data.get('gender')
+    age = data.get('age')
+    new_actor = Actor(first_name=first_name, last_name=last_name,
+                      age=age, gender=gender)
     try:
-        new_actor = Actor(first_name=first_name, last_name=last_name,
-                          age=age, gender=gender)
-        new_actor.create()
+        new_actor.insert()
+
         return jsonify({
             'success': True,
             'created': new_actor.id
         }), 201
     except:
-        abort(401)
+        abort(422)
 
 @app.route('/actors/<int:actor_id>', methods=['PATCH'])
-def update_actor(actor_id):
+@requires_auth('patch:actors')
+def update_actor(jwt, actor_id):
     actor = Actor.query.filter(Actor.id == actor_id).first()
     data = request.json()
     try:
@@ -93,7 +97,8 @@ def update_actor(actor_id):
         abort(401)
 
 @app.route('/actors/<int:actor_id>', methods=['DELETE'])
-def delete_actor(actor_id):
+@requires_auth('delete:actors')
+def delete_actor(jwt, actor_id):
     actor = Actor.query.filter(Actor.id == actor_id).first()
     try:
         actor.delete()
@@ -130,7 +135,8 @@ def movie_details():
         abort(404)
 
 @app.route('/movies/create', methods=['POST'])
-def create_movie():
+@requires_auth('post:movies')
+def create_movie(jwt):
     data = request.get_json()
     title = data.get('title')
     genre = data.get('genre')
@@ -147,7 +153,8 @@ def create_movie():
         abort(401)
 
 @app.route('/movies/<int:movie_id>', methods=['PATCH'])
-def update_movie():
+@requires_auth('patch:movies')
+def update_movie(jwt, movie_id):
     movie = Movie.query.filter(Movie.id == movie_id).first()
     data = request.json()
     try:
@@ -163,7 +170,8 @@ def update_movie():
         abort(401)
 
 @app.route('/movies/<int:movie_id>', methods=['DELETE'])
-def delete_movie():
+@requires_auth('delete:movies')
+def delete_movie(jwt, movie_id):
     movie = Movie.query.filter(Movie.id == movie_id).first()
     try:
         movie.delete()
@@ -173,6 +181,14 @@ def delete_movie():
         }), 200
     except:
         abort(401)
+
+@app.errorhandler(AuthError)
+def forbidden(AuthError):
+    return jsonify({
+        "success": False,
+        "error": 401,
+        "message": "Auth Error"
+    }), 401
 
 @app.errorhandler(404)
 def not_found(error):
@@ -191,11 +207,3 @@ def unprocessable(error):
         "error": 422,
         "message": "Unprocessable Entity"
         }), 422
-
-@app.errorhandler(AuthError)
-def forbidden(AuthError):
-    return jsonify({
-        "success": False,
-        "error": 401,
-        "message": "Auth Error"
-    }), 401

@@ -3,6 +3,8 @@ import './Navigation.css';
 import LogIn from '../Auth0/LogIn/LogIn.js';
 import LogOut from '../Auth0/LogOut/LogOut.js';
 import { AuthConsumer } from "../../authContext";
+import { withAuth0 } from '@auth0/auth0-react';
+
 
 class Navigation extends Component {
 
@@ -11,6 +13,8 @@ class Navigation extends Component {
   }
 
   render(){
+
+    const { isAuthenticated } = this.props.auth0;
 
     return(
       <div className="navigation flex">
@@ -23,7 +27,7 @@ class Navigation extends Component {
           <h2 className="nav-item" onClick={() => {this.navTo('/movies')}}>Movies</h2>
           </div>
           <div className="login">
-            <LogIn />
+            {isAuthenticated ? <LogOut /> : <LogIn /> }
           </div>
         </div>
       </div>
@@ -32,4 +36,4 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation;
+export default withAuth0(Navigation);

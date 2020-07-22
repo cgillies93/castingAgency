@@ -8,7 +8,7 @@ class CreateActorForm extends Component {
     this.state = {
       firstName: "",
       lastName: "",
-      age: 26,
+      age: 23,
       gender: 1
     }
     this.handleChange = this.handleChange.bind(this);
@@ -18,7 +18,7 @@ class CreateActorForm extends Component {
   createActor = (event) => {
     event.preventDefault();
     $.ajax({
-      url: '/actors',
+      url: '/actors/create',
       type: "POST",
       dataType: 'json',
       contentType: 'application/json',
@@ -54,11 +54,11 @@ class CreateActorForm extends Component {
         <form className="form-view" id="add-actor-form" onSubmit={this.createActor}>
           <label>
             First Name
-            <input type="text" name="first-name" onChange={this.handleChange}/>
+            <input type="text" name="firstName" onChange={this.handleChange}/>
           </label>
           <label>
             Last Name
-            <input type="text" name="last-name" onChange={this.handleChange}/>
+            <input type="text" name="lastName" onChange={this.handleChange}/>
           </label>
           <label>
             Gender

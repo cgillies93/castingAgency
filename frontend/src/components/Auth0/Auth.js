@@ -8,18 +8,21 @@ const auth = new auth0.WebAuth({
   domain: AUTH_CONFIG.domain,
   clientID: AUTH_CONFIG.clientId,
   redirectUri: AUTH_CONFIG.callbackUrl,
-  audience: `https://${AUTH_CONFIG.domain}/userinfo`,
+  audience: `casting`,
   responseType: "token id_token"
 });
 
+const JWTS_LOCAL_KEY = 'JWTS_LOCAL_KEY';
+const JWTS_ACTIVE_INDEX_KEY = 'JWTS_ACTIVE_INDEX_KEY';
+
 class Auth extends Component {
-  state = {
-    authenticated: false,
-    user: {
-      role: "visitor"
-    },
-    accessToken: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      authenticated: false,
+      token: ""
+    }
+  }
 
   initiateLogin = () => {
     auth.authorize();
@@ -27,12 +30,9 @@ class Auth extends Component {
 
   logout = () => {
     this.setState({
-    authenticated: false,
-    user: {
-      role: "visitor"
-    },
-    accessToken: ""
-  });
+      authenticated: false,
+      token: ""
+    });
   };
 
   handleAuthentication = () => {
@@ -43,19 +43,29 @@ class Auth extends Component {
       return;
     }
     this.setSession(authResult.idTokenPayload);
+    console.log(authResult)
     });
   };
 
+  checkTokenFragment() {
+    const fragment = window.location.hash.substr(1).split('&')[0].split('=');
+    if(fragment[0] === 'access_token'){
+      this.token = fragment[1];
+    }
+    console.log(this.token);
+  }
+
 
   setSession(data) {
-  this.setState({
-    authenticated: true,
-    accessToken: data.accessToken,
-    payload: {
-      token: data.token
-    }
-  });
-}
+    this.setState({
+      authenticated: true,
+      accessToken: data.accessToken,
+      payload: {
+        token: data.token
+      }
+    });
+    console.log(this.state)
+  }
 
   render() {
     const authProviderValue = {

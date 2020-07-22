@@ -1,19 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { Auth0Provider } from "@auth0/auth0-react";
+import Auth0ProviderWithHistory from "./auth0-provider-with-history";
 
 ReactDOM.render(
-  <Auth0Provider
-    domain="dev-ceg.us.auth0.com"
-    clientId="F0LHzmx5QF9kptLTRvC0B9KAn73QX4Hx"
-    redirectUri="http://localhost:3000"
-    audience="casting">
-
-    <App />
-  </Auth0Provider>,
+  <BrowserRouter>
+    <Auth0ProviderWithHistory>
+      <App />
+    </Auth0ProviderWithHistory>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

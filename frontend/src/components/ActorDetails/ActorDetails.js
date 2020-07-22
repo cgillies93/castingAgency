@@ -18,19 +18,20 @@ class ActorDetails extends Component {
 
   }
 
-
   componentDidMount(){
     this.getActorId();
     this.getActorDetails();
   }
 
+
   getActorId = () => {
-    const search = this.props.location.search;
-    const params = new URLSearchParams(search);
-    const id = params.get('id');
+    const pathname = this.props.location.pathname;
+    const id = pathname.split("/")[2];
+    console.log(id);
     this.setState({
-      id: id
+      actor_id: id
     });
+    console.log(this.state.id)
   }
 
   getActorDetails = () => {
