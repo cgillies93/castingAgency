@@ -8,12 +8,12 @@ class CreateButton extends React.Component {
   }
 
   navTo(uri) {
-    window.location.href = window.location.origin + uri;
+    window.location.href += uri;
   }
 
   render() {
     return (
-      <div onClick={() => {this.navTo('/actors/create')}} className="create-button flex">
+      <div onClick={() => {this.navTo('/create')}} className="create-button flex">
        <div className='button-wrapper'>
          <h2 className="adds">+</h2>
          <h2 className="create">Create</h2>
