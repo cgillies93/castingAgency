@@ -12,37 +12,35 @@ import MoviesList from './components/MoviesList/MoviesList.js';
 import Home from './components/Home/Home.js';
 import CreateActorForm from './components/CreateActorForm/CreateActorForm.js';
 import CreateMovieForm from './components/CreateMovieForm/CreateMovieForm.js';
-import { withAuth0 } from "@auth0/auth0-react";
 import Auth from './components/Auth0/Auth.js';
 
 
 class App extends Component {
-  render(){
 
-    const { user } = this.props.auth0;
+  render(){
 
     return (
       <div className="App">
       <Auth>
-        <Navigation path />
+        <Navigation />
           <div className="body flex">
             <Router>
               <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/actors" exact component={ActorsList}/>
+                <Route path="/actors/create" exact component={CreateActorForm}/>
                 <Route path="/actors/:id" component={ActorDetails} />
-                <Route path="/actors/create" component={CreateActorForm}/>
                 <Route path="/movies" exact component={MoviesList}/>
                 <Route path="/movies/create" component={CreateMovieForm}/>
                 <Route />
               </Switch>
             </Router>
           </div>
-        </Auth>
+          </Auth>
       </div>
     );
   }
 }
 
 
-export default withAuth0(App);
+export default App;

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './ActorsList.css';
 import Actor from '../Actor/Actor.js';
+import CreateButton from '../CreateButton/CreateButton';
 import $ from 'jquery';
 import { withAuth0 } from '@auth0/auth0-react';
 import {
@@ -69,7 +70,7 @@ class ActorsList extends Component {
 
   render(){
 
-    const { user, isAuthenticated } = this.props.auth0;
+    const { isAuthenticated, getAccessTokenSilently } = this.props.auth0;
 
     return(
       <div className="actors-list">
@@ -77,12 +78,7 @@ class ActorsList extends Component {
           <div className="list-title">
             <h2 className="page-title">Actors</h2>
           </div>
-          {!isAuthenticated &&
-            <div onClick={() => {this.navTo('/actors/create')}} className="create-button flex">
-              <h2 className="add">+</h2>
-              <h2 className="create">Create</h2>
-            </div>
-          }
+            <CreateButton />
         </div>
         <div className="actors-card-list flex">
           {this.state.actors.map((actor, ind) => (
